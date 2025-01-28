@@ -1,0 +1,54 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+jspm_packages/
+
+# Environment variables
+.env
+.env.*.local
+
+# Build output
+/build
+/dist
+
+# IDE-specific files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Debugging files
+*.swp
+*.swpx
+*.bak
+*.tmp
+
+# Coverage reports
+coverage/
+
+# Temp files
+tmp/
+temp/
+
+# Testing
+.nyc_output/
