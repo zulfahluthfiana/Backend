@@ -27,15 +27,19 @@ app.use("/api/kritik_saran", kritik_saranRoutes);
 app.use(authenticateUser);
 app.use(authenticateAdmin);
 
-app.get("/", (req, res) => {
-  res.send("Hello!");
-});
 
 
 
+app.get('/', (req, res) => {
+  res.send({
+    message: 'Hello 👋',
+    status: 'Server ready 🚀',
+  })
+})
 app.listen(PORT, () => {
-  console.log("Server is running on http://localhost:${PORT}");
-});
+
+  console.log(`Server is running on http://localhost:${PORT}`);
+});  
 
 
 
