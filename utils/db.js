@@ -25,6 +25,7 @@ const sequelize = new Sequelize(
     dialectOptions: {
       requestTimeout: 30000, 
       encrypt: true,
+      ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false, // Mengaktifkan SSL di produksi
     },
   }
 );
