@@ -1,14 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const { authenticateUser, authenticateAdmin } = require("./middleware/authmiddleware");
+const { authenticateUser, authenticateAdmin } = require("../middleware/authmiddleware");
 
 // Route imports
-const userRoutes = require("./api/routes/userroutes");
-const adminRoutes = require("./api/routes/adminroutes");
-const productRoutes = require("./api/routes/productroutes");
-const produkDetailsRoutes = require("./api/routes/produk_detailsroutes");
-const kritikSaranRoutes = require("./api/routes/kritik_saranroutes");
+const userRoutes = require("../api/routes/userroutes");
+const adminRoutes = require("../api/routes/adminroutes");
+const productRoutes = require("../api/routes/productroutes");
+const produkDetailsRoutes = require("../api/routes/produk_detailsroutes");
+const kritikSaranRoutes = require("../api/routes/kritik_saranroutes");
 
 const app = express();
 const PORT = 3001;
