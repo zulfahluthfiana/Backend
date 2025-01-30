@@ -11,29 +11,28 @@ const signToken = (id) => {
 
 const createUser = async (req, res) => {
   try {
+
     const { errors } = loginValidation.validateCreatePayload(req.body);
     if (errors) {
       return res.status(400).json({ errors });
     }
+    
     const { username, email, password, passwordConfirm } = req.body;
-    if (password != passwordConfirm) {
-      return res.status(400).json({
-        message: "Password Tidak Sama",
-      });
+    
+    if (!email) {
+      return res.status(400).json({ message: "Email tidak boleh kosong" });
     }
 
-    const cekEmail = await user.findOne({ where: { email: email } });
+    if (password !== passwordConfirm) {
+      return res.status(400).json({ message: "Password Tidak Sama" });
+    }
+
+    const cekEmail = await user.findOne({ where: { email } });
     if (cekEmail) {
-      return res.status(400).json({
-        errors: ["Email sudah terdaftar"],
-      });
+      return res.status(400).json({ errors: ["Email sudah terdaftar"] });
     }
 
-    const User = await user.create({
-      username,
-      email,
-      password,
-    });
+    const User = await user.create({ username, email, password });
 
     const token = signToken(User.id);
 
@@ -43,12 +42,14 @@ const createUser = async (req, res) => {
       token,
     });
   } catch (error) {
+    console.error("Error saat registrasi:", error); 
     return res.status(400).json({
       message: "Registration Gagal",
       error: error.message,
     });
   }
 };
+
 
 const userLogin = async (req, res) => {
   try {
